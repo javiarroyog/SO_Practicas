@@ -1,0 +1,14 @@
+(1)
+Creamos la variable fd, que será el file descriptor que usaremos en todas las llamadas a funciones que operen sobre el archivo.
+(2)
+Asociamos fd al archivo mediante la función open
+(3)
+La función open crea el archivo "archivo"(O_CREAT),trunca su longitud a 0 (O_TRUNC),de solo escritura(O_WRONLY)
+Return (-1 si fail)
+(4)
+write(fd,buffer,bytes)
+return(número de bytes escritos si success,-1 si fail)
+(5)
+lseek(fd,offset,whence)
+return (offset location si success, -1 si fail)
+
