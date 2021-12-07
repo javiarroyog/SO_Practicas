@@ -7,25 +7,27 @@
 #include<errno.h>
 #include<stdlib.h>
 
-int main(int argc, char *arv[]){
+int main(int argc, char *argv[]){
+    DIR* dir;
     struct dirent direc;
     int num_octal;
     
-    if (direc = opendir(argv[1]) == null){
+    if ((dir= opendir(argv[1]) == NULL)){
         printf ("\nError %d en open de directorio ", errno);
         perror ("\nError en open");
         exit (EXIT_FAILURE);
     }
     
-    num_octal = argv[2].strol;
+    num_octal = strtol(argv[2]);
     
-    for (int i = 0; direc.readdir() != null; i++){
+    while((direc = readdir(dir)) != NULL){
         int fd;
-        if (fd = open(direc.d_name) < 0){
+        if (fd = open(direc.d_name, S_IRGRP) < 0){
             perror ("\nError en open");
             exit (EXIT_FAILURE);
         }
         chmod(direc.d_name,num_octal);
+        close(fd);
     }
 
 }
